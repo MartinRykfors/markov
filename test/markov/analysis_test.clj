@@ -1,6 +1,6 @@
-(ns markov.core-test
+(ns markov.analysis-test
   (:require [clojure.test :refer :all]
-            [markov.core :refer :all]))
+            [markov.analysis :refer :all]))
 
 (deftest n-gram
   (testing "n-grams is empty if word is shorter than n"
