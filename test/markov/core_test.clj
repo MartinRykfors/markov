@@ -9,3 +9,11 @@
     (is (= [ "aoeu"  ](n-grams 4 "aoeu"))))
   (testing "actually does what it is supposed to"
     (is (= ["ao" "oe" "eu"] (n-grams 2 "aoeu")))))
+
+(deftest frequency-map-tests
+  (testing "add new n-gram creates new entry"
+    (is (= {"ao" {"u" 1}} (update-freq-map {} "aou" )))
+    (is (= {"aoe" {"u" 1}} (update-freq-map {} "aoeu" )))
+    (is (= {"snt" {"h" 1} "aoe" {"u" 1}} (form-freq-map ["aoeu" "snth"])))
+    (is (= {"snt" {"h" 2} "aoe" {"u" 1}} (form-freq-map ["aoeu" "snth" "snth"])))))
+
