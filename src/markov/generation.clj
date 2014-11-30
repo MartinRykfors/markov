@@ -12,7 +12,7 @@
   (let [roll (rand-int (freq-sum c-freq-map))]
     (first (first (filter #(> (last %) roll) c-freq-map)))))
 
-(defn append-generated-char [gen-string freq-maps]
+(defn append-generated-char [freq-maps gen-string]
   (let [c-freq-map (cumulative-freq-map (get freq-maps (:last-n-gram gen-string)))]
     (let [new-char (get-weighted-char c-freq-map)]
       (let [appended-string (str (:current-string gen-string) new-char)

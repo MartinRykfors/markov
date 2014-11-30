@@ -8,5 +8,5 @@
 
 (deftest generation-test
   (testing "simple generation"
-    (is (= "initial b" (:current-string (append-generated-char simple-seed simple-map))))
-    (is (= "b" (:last-n-gram (append-generated-char simple-seed simple-map))))))
+    (is (= "initial b" (:current-string (append-generated-char simple-map simple-seed))))
+    (is (= "b" (:last-n-gram (append-generated-char simple-map simple-seed))))))
