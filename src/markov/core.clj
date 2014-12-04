@@ -11,14 +11,14 @@
 (defn clean-text [text]
   (string/replace text #"\n" " "))
 
-(defn run-markov [source order]
+(defn run-markov [source order length]
   (let [source-text (clean-text (slurp source))]
     (let [freq-map (analysis/freq-map (inc order) source-text)]
-      (print-generated-string freq-map 100))))
+      (print-generated-string freq-map length))))
 
 (defn -main
   [& args]
-  (if (not (= 2 (count args)))
-    (println "usage: source-path order")
-    (let [[source order] args]
-      (run-markov source order))))
+  (if (not (= 3 (count args)))
+    (println "usage: source-path markov-order generated-text-length")
+    (let [[source order length] args]
+      (run-markov source order length))))
