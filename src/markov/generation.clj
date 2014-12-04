@@ -19,4 +19,8 @@
         (let [appended-string (str (:current-string gen-string) new-char)
               new-last-n-gram (str (string/join (rest (:last-n-gram gen-string))) new-char)]
           (Generation-String. appended-string new-last-n-gram))))
-    (Generation-String. (str (:current-string gen-string) " ") (first (first freq-maps)))))
+    (Generation-String. (str (:current-string gen-string) " ") (first (keys freq-maps)))))
+
+(defn run-generation [freq-maps length]
+  (let [init-string (Generation-String. "" (first (keys freq-maps)))]
+    (nth (iterate #(append-generated-char freq-maps %) init-string) length)))
