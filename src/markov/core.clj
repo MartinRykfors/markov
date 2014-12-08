@@ -21,4 +21,4 @@
   (if (not (= 3 (count args)))
     (println "usage: source-path markov-order generated-text-length")
     (let [[source order length] args]
-      (run-markov source order length))))
+      (run-markov source (read-string order) (read-string length)))))
