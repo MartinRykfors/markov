@@ -12,9 +12,9 @@
   (string/replace text #"\n" " "))
 
 (defn run-markov [source order length]
-  (let [source-text (clean-text (slurp source))]
-    (let [freq-map (analysis/freq-map (inc order) source-text)]
-      (print-generated-string freq-map length))))
+  (let [source-text (clean-text (slurp source))
+        freq-map (analysis/freq-map (inc order) source-text)]
+    (print-generated-string freq-map length)))
 
 (defn -main
   [& args]
